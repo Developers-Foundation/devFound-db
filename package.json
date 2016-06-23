@@ -1,23 +1,28 @@
 {
-  "name": "Developers' Foundation Database",
+  "name": "devfound-db",
   "version": "1.0.0",
-  "description": "Database for backend developers' foundation",
+  "description": "Database for Developers' Foundation",
   "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nobodyrandom/devFound-db"
+    "url": "git+https://github.com/nobodyrandom/devFound-db.git"
   },
+  "author": "Nobody Random",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nobodyrandom/devFound-db/issues"
+  },
+  "homepage": "https://github.com/nobodyrandom/devFound-db#readme",
+  "engines": {
+    "node": ">=4.3"
+  },
   "dependencies": {
     "express": "~4.11.x",
     "kerberos": "~0.0.x",
     "parse": "~1.8.0",
     "parse-server": "~2.2.12"
-  },
-  "scripts": {
-    "start": "node index.js"
-  },
-  "engines": {
-    "node": ">=4.3"
   }
 }
