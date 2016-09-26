@@ -4,7 +4,7 @@ Parse.Cloud.define('hello', function (req, res) {
 
 Parse.Cloud.define('isAdmin', function (req, response) {
     if (!req.params.username) {
-        response.error('Username has not been provided');
+        response.error(false);
     }
 
     var queryRole = new Parse.Query(Parse.Role);
@@ -22,18 +22,18 @@ Parse.Cloud.define('isAdmin', function (req, response) {
                     var user = u;
 
                     if (user) {
-                        response.success('User is admin');
+                        response.success(true);
                     } else {
-                        response.error('User is not admin');
+                        response.error(false);
                     }
                 },
                 error: function () {
-                    response.error('Error on user lookup');
+                    response.error(false);
                 }
             })
         },
         error: function () {
-            response.error('User admin check failed');
+            response.error(false);
         }
     });
 });
