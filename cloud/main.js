@@ -16,7 +16,6 @@ Parse.Cloud.define('isAdmin', function (req, response) {
             var role = r;
             //var relation = new Parse.Relation(role, 'users');
             var relation = role.getUsers();
-            response.success(relation);
             var admins = relation.query();
 
             admins.equalTo('username', req.params.username);
