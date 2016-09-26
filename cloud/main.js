@@ -17,10 +17,10 @@ Parse.Cloud.define('isAdmin', function (req, response) {
             var admins = relation.query();
 
             admins.equalTo('username', req.params.username);
-            admins.first({
+            admins.find({
                 success: function (u) {
                     var user = u;
-response.sucess(user);
+                    response.success(user);
                     if (user) {
                         response.success(true);
                     } else {
