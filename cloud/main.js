@@ -13,6 +13,7 @@ Parse.Cloud.define('isAdmin', function (req, response) {
     queryRole.first({
         success: function (r) {
             var role = r;
+            response.success(role);
             var relation = new Parse.Relation(role, 'users');
             var admins = relation.query();
 
@@ -20,7 +21,7 @@ Parse.Cloud.define('isAdmin', function (req, response) {
             admins.find({
                 success: function (u) {
                     var user = u;
-                    response.success(user);
+                    //response.success(user);
                     if (user) {
                         response.success(true);
                     } else {
