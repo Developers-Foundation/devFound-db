@@ -3,6 +3,7 @@ Parse.Cloud.define('hello', function (req, res) {
 });
 
 Parse.Cloud.define('isAdmin', function (req, response) {
+    Parse.Cloud.useMasterKey();
     if (!req.params.username) {
         response.error(false);
     }
@@ -13,8 +14,8 @@ Parse.Cloud.define('isAdmin', function (req, response) {
     queryRole.first({
         success: function (r) {
             var role = r;
-            var relation = new Parse.Relation(role, 'users');
-            response.success(relation.toJSON());
+            var relation = new Parse.Relation(role, 'Users');
+            response.success(relation);
             var admins = relation.query();
 
             admins.equalTo('username', req.params.username);
