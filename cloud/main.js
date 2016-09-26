@@ -16,7 +16,7 @@ Parse.Cloud.define('isAdmin', function (req, response) {
             var relation = new Parse.Relation(role, 'users');
             var admins = relation.query();
 
-            admins.equalTo('username', req.params.username)
+            admins.equalTo('username', req.params.username);
             admins.first({
                 success: function (u) {
                     var user = u;
@@ -24,13 +24,13 @@ Parse.Cloud.define('isAdmin', function (req, response) {
                     if (user) {
                         response.success(true);
                     } else {
-                        response.error(false);
+                        response.success(false);
                     }
                 },
                 error: function () {
                     response.error(false);
                 }
-            })
+            });
         },
         error: function () {
             response.error(false);
