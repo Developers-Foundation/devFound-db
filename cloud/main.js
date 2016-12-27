@@ -39,3 +39,8 @@ Parse.Cloud.define('isAdmin', function (req, response) {
         }
     });
 });
+
+Parse.Cloud.define('isRole', function (req, response) {
+
+});
+
