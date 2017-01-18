@@ -23,12 +23,12 @@ Parse.Cloud.define('isAdmin', function (req, response) {
             admins.first({
                 success: function (u) {
                     var user = u;
-                    console.log(user);
+                    //console.log(user);
                     //response.success(user);
-                    if (user) {
-                        response.success(true);
-                    } else {
+                    if (typeof user === "undefined") {
                         response.success(false);
+                    } else {
+                        response.success(true);
                     }
                 },
                 error: function () {
