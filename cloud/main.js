@@ -22,6 +22,7 @@ console.log(req.params.username);
 
             admins.equalTo('username', req.params.username);
             admins.first({
+                useMasterKey: true,
                 success: function (u) {
                     var user = u;
                     console.log(user.toString());
