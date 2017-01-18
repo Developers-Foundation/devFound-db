@@ -22,6 +22,7 @@ Parse.Cloud.define('isAdmin', function (req, response) {
             admins.first({
                 success: function (u) {
                     var user = u;
+                    console.log(user);
                     //response.success(user);
                     if (user) {
                         response.success(true);
