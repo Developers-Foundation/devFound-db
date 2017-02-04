@@ -7,36 +7,30 @@ Parse.Cloud.define('isAdmin', function (req, response) {
     if (!req.params.username) {
         response.error(false);
     }
-    console.log(req.params.username);
     var queryRole = new Parse.Query(Parse.Role);
     queryRole.equalTo('name', 'Administrator');
 
     queryRole.first({useMasterKey: true}).then(function (r) {
-            var role = r;
-            console.log(role.toString());
-            var relation = new Parse.Relation(role, 'users');
-            //var relation = role.getUsers();
-            var admins = relation.query();
+        var role = r;
+        var relation = new Parse.Relation(role, 'users');
+        //var relation = role.getUsers();
+        var admins = relation.query();
 
-            admins.equalTo('username', req.params.username);
-            admins.first({
-                useMasterKey: true,
-                success: function (u) {
-                    var user = u;
-                    console.log(user.toString());
-                    //response.success(user);
-                    if (user) {
-                        response.success(true);
-                    } else {
-                        response.success(false);
-                    }
-                },
-                error: function () {
-                    response.error(false);
-                }
-            });
+        admins.equalTo('username', req.params.username);
+        return admins.first({useMasterKey: true});
+    }).then(function (u) {
+
+            var user = u;
+            console.log("Searching for: " + req.params.username + ", Found: " + user);
+            //response.success(user);
+            if (user) {
+                response.success(true);
+            } else {
+                response.success(false);
+            }
+            return;
         },
-        function () {
+        function (err) {
             response.error(false);
         }
     );
