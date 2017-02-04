@@ -19,9 +19,8 @@ Parse.Cloud.define('isAdmin', function (req, response) {
         admins.equalTo('username', req.params.username);
         return admins.first({useMasterKey: true});
     }).then(function (u) {
-
             var user = u;
-            console.log("Searching for: " + req.params.username + ", Found: " + user);
+            console.log("Searching for: " + req.params.username + ", Found: " + user.getUsername());
             //response.success(user);
             if (user) {
                 response.success(true);
